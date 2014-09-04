@@ -3,16 +3,9 @@
   "version": "0.0.1",
   "description": "Social auth from the command line",
   "main": "index.js",
-  "scripts": {
-    "test": "node test"
-  },
-  "keywords": [
-    "social",
-    "auth",
-    "command",
-    "line",
-    "cli"
-  ],
+  "bin": { "sauth": "bin/suath" },
+  "scripts": { "test": "node test" },
+  "keywords": [ "social", "auth", "command", "line", "cli" ],
   "author": "Joseph Werle <joseph.werle@gmail.com>",
   "license": "MIT",
   "dependencies": {
