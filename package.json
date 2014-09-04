@@ -21,5 +21,13 @@
   },
   "devDependencies": {
     "superagent": "^0.18.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwerle/sauth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jwerle/sauth/issues"
+  },
+  "homepage": "https://github.com/jwerle/sauth"
 }
