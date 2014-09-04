@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies
+ */
+
+var minimist = require('minimist')
+  , path = require('path')
+
+/**
+ * Outputs usage
+ *
+ * @api public
+ * @param {String} method - optional (Default: 'log')
+ */
+
+function usage (method) {
+  method = method || 'log';
+  console[method]("usage: sauth [-hV] <strategy> [-c config] [...args]");
+}
+
+/**
+ * main
+ */
+
+void function main (argv) {
+  var exit = process.exit;
+  var strategy = null;
+  var opts = null;
+
+  if (0 == argv._.length) {
+    if (argv.h || argv.help) {
+      return usage();
+    } else if (argv.V || argv.version) {
+      return console.log(require('../package').version);
+    } else {
+      return usage('error'), exit(1);
+    }
+  } else {
+    strategy = argv._.shift();
+    if (argv.c || argv.config) {
+      opts = require(path.resolve(argv.c || argv.config));
+      opts._ = argv._;
+      opts['--'] = argv['--'];
+    } else {
+      opts = argv;
+    }
+    try {
+      require('sauth-'+ strategy)(opts, function (err) {
+        if (err) { console.error(err.stack ? err.stack : err); }
+      });
+    } catch (e) {
+      switch (e.code) {
+        case 'MODULE_NOT_FOUND':
+          if (e.message.match('sauth-'+ strategy)) {
+            console.error("Strategy `%s' not found", strategy);
+          } else { throw e; }
+          break;
+
+        default:
+          console.error(e.message);
+      }
+      exit(1);
+    }
+  }
+}(minimist(process.argv.slice(2), {'--': true}));
+

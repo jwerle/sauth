@@ -1,0 +1,2 @@
+
+exports.Strategy = require('./strategy');
