@@ -1,9 +1,9 @@
 {
   "name": "sauth",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Social auth from the command line",
   "main": "index.js",
-  "bin": { "sauth": "bin/suath" },
+  "bin": { "sauth": "bin/sauth" },
   "scripts": { "test": "node test" },
   "keywords": [ "social", "auth", "command", "line", "cli" ],
   "author": "Joseph Werle <joseph.werle@gmail.com>",
