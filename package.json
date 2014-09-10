@@ -1,6 +1,6 @@
 {
   "name": "sauth",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Social auth from the command line",
   "main": "index.js",
   "bin": { "sauth": "bin/sauth" },
