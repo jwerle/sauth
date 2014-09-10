@@ -48,6 +48,7 @@ void function main (argv) {
     try {
       require('sauth-'+ strategy)(opts, function (err) {
         if (err) { console.error(err.stack ? err.stack : err); }
+        process.exit(0);
       });
     } catch (e) {
       switch (e.code) {
